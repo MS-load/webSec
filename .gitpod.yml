@@ -1,9 +1,14 @@
+image:
+  file: .gitpod.Dockerfile
+
 tasks:
   - init: npm install
-    command: docker-compose up
+    command: npm run dev
 
 ports:
   - port: 3000
     onOpen: open-preview
-  - port: 5432
-    onOpen: ignore
+
+vscode:
+  extensions:
+    - Prisma.prisma
