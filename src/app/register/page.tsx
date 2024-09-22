@@ -24,7 +24,7 @@ export default function Home() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const response = await fetch("/api/login", {
+    const response = await fetch("/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,21 +42,10 @@ export default function Home() {
     }
   };
 
-  const handleResetDb = async () => {
-    try {
-      const response = await fetch("/api/resetDb");
-      await response.json();
-      alert("Successfully reset the database.");
-    } catch (error) {
-      console.error("Error resetting database:", error);
-      alert("Failed to reset the database.");
-    }
-  };
-
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md">
-        <h2 className="text-2xl mb-4 text-blue-700">Login</h2>
+        <h2 className="text-2xl mb-4 text-green-700">New user</h2>
         <div className="mb-4">
           <label className="block text-gray-700">Username</label>
           <input
@@ -77,19 +66,11 @@ export default function Home() {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded"
+          className="w-full bg-green-500 text-white p-2 rounded"
         >
-          Login
+          Register
         </button>
       </form>
-
-      <button
-        type="button"
-        onClick={handleResetDb}
-        className="bg-red-300 text-white p-2 rounded mt-4"
-      >
-        Reset Database
-      </button>
     </div>
   );
 }
