@@ -41,6 +41,8 @@ CASE 5:
 not always a good idea to show the error message to the user. It can be used by attackers to get information about the database.
 Example:
 username : user1' OR 1=1; --
+
+comment out this in the code
 ´´´	
 if (err instanceof Error) {
 return NextResponse.json(err.message, { status: 500 });
@@ -54,6 +56,13 @@ user1' UNION SELECT NULL,NULL,NULL--
 user1' UNION SELECT username, password FROM users --
 This message indicates that there is a syntax error near the extra single quote, providing information about the database and the query structure.
 
+´´´	
+if (err instanceof Error) {
+return NextResponse.json(err.message, { status: 500 });
+}
+´´´
+
+
 CASE 6:
 getting all the data from the database
 Example:
@@ -65,15 +74,6 @@ FROM users; --
 
 
 SOLUTION 2:
-Explanation
-Hashing Passwords: The bcrypt.hash function takes the plain text password and a salt rounds value (10 in this case) to generate a hashed password.
-Storing Hashed Passwords: The hashed password is stored in the database instead of the plain text password.
-Verifying Passwords: The bcrypt.compare function compares the plain text password provided by the user with the hashed password stored in the database.
-Benefits
-Security: Hashing passwords ensures that even if the database is compromised, the actual passwords are not exposed.
-Salting: bcrypt automatically adds a unique salt to each password, making it more secure against rainbow table attacks.
-
-SOLUTION 3:
 Explanation
 Hashing Passwords: The bcrypt.hash function takes the plain text password and a salt rounds value (10 in this case) to generate a hashed password.
 Storing Hashed Passwords: The hashed password is stored in the database instead of the plain text password.
