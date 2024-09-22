@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import withAuth from '../hoc/withAuth';
 
 const WelcomePage = () => {
   const [dogUrl, setDogUrl] = useState("");
@@ -31,4 +32,4 @@ const WelcomePage = () => {
   );
 };
 
-export default WelcomePage;
+export default withAuth(WelcomePage)
